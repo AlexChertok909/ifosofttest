@@ -55,7 +55,14 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                    <a class="dropdown-item" href="{{ route('balance') }}">
+                                        {{ __('Balance') }}
+                                    </a>
+									<a class="dropdown-item" href="{{ route('deposit') }}">
+                                        {{ __('Deposit') }}
+                                    </a>
+									
+									<a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}

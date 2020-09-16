@@ -20,3 +20,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/deposit', 'DepositController@index')->name('deposit');
+Route::get('/balance', 'BalanceController@index')->name('balance');
