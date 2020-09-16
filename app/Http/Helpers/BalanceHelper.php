@@ -42,8 +42,11 @@ class BalanceHelper
 		$deposits = $deposits->toArray();
 		
 		foreach ($deposits as &$deposit) {
-			$deposit['accrued'] = 10 - $deposit['accrue_times'];
-			$deposit['amount'] = $deposit['accrued'] *  $deposit['invested'] * $deposit['percent'] / 100;
+			$transactions = Transaction::where('deposit_id',  $deposit['id'])
+				->whereIn('type', ['accrue', 'close_deposit'])->get();
+				
+			$deposit['accrued'] = $transactions->count();
+			$deposit['amount'] = $transactions->sum('amount');
 		}
 		
 		unset($deposit);
