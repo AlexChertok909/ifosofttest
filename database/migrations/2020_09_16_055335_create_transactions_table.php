@@ -19,10 +19,10 @@ class CreateTransactionsTable extends Migration
 			$table->bigInteger('user_id');
 			$table->foreign('user_id')->references('id')->on('users');
 			$table->bigInteger('wallet_id');
-            $table->foreign('wallet_id')->references('id')->on('wallets');
-			$table->bigInteger('deposit');
-            $table->foreign('deposit')->references('id')->on('deposits');
-			$table->float('balance', 8, 2)->default(0);
+			$table->index('wallet_id');
+            $table->bigInteger('deposit_id')->nullable(true)->default(null);
+			$table->index('deposit_id');
+            $table->float('amount', 8, 2)->default(0);
             $table->timestamps();
         });
     }
