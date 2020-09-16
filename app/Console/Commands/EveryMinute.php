@@ -48,7 +48,7 @@ class EveryMinute extends Command
 		}
 		
 		$deposits->each(function ($deposit) {
-			$amount = round ($deposit->invested * $deposit->invested / 100, 2);
+			$amount = round ($deposit->invested * $deposit->percent / 100, 2);
 			
 			Wallet::where('id', $deposit->wallet_id)->increment('balance', $amount);
 			
