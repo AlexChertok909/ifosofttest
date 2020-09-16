@@ -29,6 +29,11 @@ class HomeController extends Controller
     public function index()
     {
         $balance = $this->balanceHelper->getBalance();
-		return view('home', $balance);
+		$deposits = $this->balanceHelper->getDeposits();
+		$transactions = $this->balanceHelper->getTransactions();
+		
+		return view('home', ['balance' => $balance,
+							 'deposits' => $deposits,
+							 'transactions' => $transactions]);
     }
 }

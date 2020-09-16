@@ -25,5 +25,5 @@ Route::get('/balance', 'BalanceController@index')->name('balance');
 Route::post('/balance/add', 'BalanceController@add')->name('addBalance');
 
 Route::get('/deposit', 'DepositController@index')->name('deposit');
-Route::post('/deposit/create', 'BalanceController@add')->name('createDeposit');
+Route::post('/deposit/create', 'DepositController@create')->name('createDeposit');
 

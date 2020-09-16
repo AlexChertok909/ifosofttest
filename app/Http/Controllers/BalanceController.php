@@ -3,25 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Validators\CommonValidator;
+use App\Http\Validators\BalanceValidator;
 use App\Repositories\BalanceRepository;
 
 class BalanceController extends Controller
 {
-	private $commonValidator;
+	private $balanceValidator;
 	private $balanceRepository;
 	
 	/**
      * Create a new controller instance.
      *
-	 * @param CommonValidator $commonValidator
+	 * @param BalanceValidator $balanceValidator
 	 * @param BalanceRepository $balanceRepository
 	 * @return void
      */
-    public function __construct(CommonValidator $commonValidator, BalanceRepository $balanceRepository)
+    public function __construct(BalanceValidator $balanceValidator, BalanceRepository $balanceRepository)
     {
         $this->middleware('auth');
-		$this->commonValidator = $commonValidator;
+		$this->balanceValidator = $balanceValidator;
 		$this->balanceRepository = $balanceRepository;
     }
 
@@ -42,7 +42,7 @@ class BalanceController extends Controller
      */
     public function add()
     {        
-		$validator = $this->commonValidator->amountRequestValidator();
+		$validator = $this->balanceValidator->amountRequestValidator();
 		
         if ($validator->fails())
 			return redirect('balance')
